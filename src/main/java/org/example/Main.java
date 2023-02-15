@@ -1,8 +1,8 @@
 package org.example;
 
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
@@ -46,5 +46,40 @@ public class Main {
                 .map(s -> s.replaceAll("[aeiouAEIOU]", ""))
                 .collect(Collectors.toList());
         collect.forEach(e -> System.out.print(e + " "));
+
+        /*
+        4. Given a list of integers, write a stream pipeline that
+        returns a boolean indicating whether any of the integers are negative.
+         */
+        List<Integer> integers = Arrays.asList(1, -2, -3, 4, 5, -6);
+        boolean ans = integers.stream().anyMatch(n -> n < 0);
+        System.out.println(ans);
+
+        List<User> userList = new ArrayList<>();
+        User user1 = new User(1, "messi", "mumbai");
+        User user2 = new User(2, "neymar", "delhi");
+        User user3 = new User(3, "ronaldo", "jaipur");
+
+        userList.add(user1);
+        userList.add(user2);
+        userList.add(user3);
+
+        List<Map.Entry<Integer, String>> idAndFirstName = userList.stream()
+                .map(user ->
+                        new AbstractMap
+                                .SimpleEntry<>(user.getId(), user.getFirstName()))
+                .collect(Collectors.toList());
+
+        idAndFirstName.forEach(System.out::println);
+
+        User userCity = userList.stream()
+                .filter(user -> user.getCity().equals("mumbai"))
+                .findFirst()
+                .orElse(null) ;
+
+///       assert userCity != null;
+        System.out.println(userCity);
+
+
     }
 }

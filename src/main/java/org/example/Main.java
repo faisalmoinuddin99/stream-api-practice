@@ -83,3 +83,13 @@ public class Main {
 
     }
 }
+
+/*
+4
+8
+ppl bnn chrry dt true
+1=messi
+2=neymar
+3=ronaldo
+User{id=1, firstName='messi', city='mumbai'}
+ */
